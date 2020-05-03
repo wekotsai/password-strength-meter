@@ -1,0 +1,17 @@
+@font-face {
+    font-family: Lato;
+    src: url(/assets/fonts/Lato.woff2) format('woff2'),
+         url(/assets/fonts/Lato.woff) format('woff');
+}
+
+.form__wrapper {
+    display: table-caption;
+}
+
+.login__wrapper {
+    font-family: Lato, sans-serif;
+}
+
+.login__subtitle {
+    color: grey;
+}

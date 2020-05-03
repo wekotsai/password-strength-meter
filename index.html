@@ -1,0 +1,37 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Password Strength Meter</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <link rel="stylesheet" href="./src/styles.css">
+
+</head>
+
+<body>
+    <div class="login__wrapper">
+        <h1 class="login__title">Register</h1>
+        <h2 class="login__subtitle">Create your personal account</h2>
+        <form class="form">
+
+            <div class="form__wrapper">
+                <label class="form__title">Email address:</label>
+                <input type="text" id="password" autocomplete="off" class="form__input--lg">
+
+                <label class="form__title">Password:</label>
+                <input type="text" id="password" autocomplete="off" class="form__input--lg">
+            </div>
+            <button class="btn btn-success btn-lg btn-block">Show password</button>
+            <progress max="100" value="0" id="meter"></progress>
+            <div class="textbox text-center"> please enter your password </div>
+            
+        </form>
+    </div>
+
+    <script src="./src/index.js"></script>
+</body>
+</html>
