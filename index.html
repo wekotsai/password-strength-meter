@@ -14,26 +14,26 @@
 
 <body>
     <div class="login__wrapper">
-        <h1 class="login__title">Register</h1>
-        <h2 class="login__subtitle">Create your personal account</h2>
+        <h1 class="login__title text-success">Register</h1>
+        <h2 class="login__subtitle text-muted">Create your personal account</h2>
         <form class="form">
 
             <div class="form__wrapper">
-                <label class="form__title">Email address:</label>
-                <input type="text" autocomplete="off" class="form__input--lg">
+                <label class="form__title text-success">Email address:</label>
+                <input class="form__input" type="email" autocomplete="off" >
 
                 
-                <label class="form__title">Password:</label>
+                <label class="form__title text-success">Password:</label>
                 <div class="form__password">    
-                    <input type="password" id="password" autocomplete="off" class="form__input--lg">
+                    <input class="form__input" id="password" type="password" autocomplete="off">
                     <i onclick="showPw()" class="fas fa-eye-slash" id="display"></i>
                 </div>
             </div>
             
             <progress max="100" value="0" id="meter"></progress>
-            <div class="textbox text-center"> please enter your password </div>
-            <p class="form__title"><input type="checkbox" required name="terms"> I accept the <u>Terms and Conditions</u></p>
-            <button class="btn"> Submit </button>
+            <p class="form__hints text-muted"> Please enter your password </p>
+            <p class="form__title text-success"><input type="checkbox" required name="terms"> I accept the <u>Terms and Conditions</u></p>
+            <button class="btn__submit"> Register now </button>
         </form>
     </div>
 

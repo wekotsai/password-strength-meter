@@ -4,20 +4,63 @@ body {
 
 .login__wrapper {
     font-family: Lato, sans-serif;
+    margin-top: 2em;
+    margin-left: 5em;
 }
 
-.login__title, .form__title {
+.text-success {
     color: #000e7e;
 }
 
-.login__subtitle {
-    color: grey;
+.text-muted {
+    color: #666666;
+}
+
+.fas {
+    margin: 1.25em 0 0 0.5em;
+    color: #000e7e;
 }
 
 .form__wrapper {
     display: table-caption;
 }
 
+.form__title {
+    font-weight: 700;
+    margin-bottom: 1em;
+}
+
+.form__input {
+    width: 25em;
+    height: 2em;
+    border-radius: 5px;
+    border: #ccc solid 1px;
+    margin: 1em 0 1.25em 0;
+}
+
 .form__password {
     display: inline-flex
 }
+
+.btn__submit {
+    background: #000e7e;
+    color: #ffffff;
+    border-radius: 70px;
+    width: 150px;
+    padding: 10px;
+    border: none;
+    font-size: 1em;
+}
+
+.btn__submit:hover {
+    background: rgb(0, 14, 126, 0.85);
+}    
+
+.all-center {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+  }

@@ -1,10 +1,10 @@
-var code = document.getElementById("password");
+var password = document.getElementById("password");
 
-var strengthbar = document.getElementById("meter");
-var display = document.getElementsByClassName("textbox")[0];
+var strengthBar = document.getElementById("meter");
+var display = document.getElementsByClassName("form__hints")[0];
 
-code.addEventListener("keyup", function() {
-  passwordMeter(code.value);
+password.addEventListener("keyup", function() {
+  passwordMeter(password.value);
 });
 
 
@@ -31,33 +31,33 @@ function passwordMeter(password) {
   if (password.match(/[$@#&!]+/)) {
     strength += 1;
   } else {
-    display.innerHTML = "a speical character is required";
+    display.innerHTML = "Your password must contain a speical character";
   }
 
   if (password.length < 8) {
-    display.innerHTML = "minimum number of characters is 8";
+    display.innerHTML = "The minimum number of characters is 8";
   }
 
   switch (strength) {
     case 0:
-      strengthbar.value = 0;
-      break;
+        strengthBar.value = 0;
+        break;
 
     case 1:
-      strengthbar.value = 25;
-      break;
+        strengthBar.value = 25;
+        break;
 
     case 2:
-      strengthbar.value = 50;
-      break;
+        strengthBar.value = 50;
+        break;
 
     case 3:
-      strengthbar.value = 75;
-      break;
+        strengthBar.value = 75;
+        break;
 
     case 4:
-      strengthbar.value = 100;
-      break;
+        strengthBar.value = 100;
+        break;
   }
 }
 
