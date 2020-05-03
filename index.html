@@ -7,7 +7,7 @@
   <title>Password Strength Meter</title>
   <meta name="description" content="The HTML5 Herald">
   <meta name="author" content="SitePoint">
-
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link rel="stylesheet" href="./src/styles.css">
 
 </head>
@@ -20,15 +20,20 @@
 
             <div class="form__wrapper">
                 <label class="form__title">Email address:</label>
-                <input type="text" id="password" autocomplete="off" class="form__input--lg">
+                <input type="text" autocomplete="off" class="form__input--lg">
 
+                
                 <label class="form__title">Password:</label>
-                <input type="text" id="password" autocomplete="off" class="form__input--lg">
+                <div class="form__password">    
+                    <input type="password" id="password" autocomplete="off" class="form__input--lg">
+                    <i onclick="showPw()" class="fas fa-eye-slash" id="display"></i>
+                </div>
             </div>
-            <button class="btn btn-success btn-lg btn-block">Show password</button>
+            
             <progress max="100" value="0" id="meter"></progress>
             <div class="textbox text-center"> please enter your password </div>
-            
+            <p class="form__title"><input type="checkbox" required name="terms"> I accept the <u>Terms and Conditions</u></p>
+            <button class="btn"> Submit </button>
         </form>
     </div>
 
