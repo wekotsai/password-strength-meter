@@ -1,83 +1,41 @@
 var password = document.getElementById("password");
-
 var strengthBar = document.getElementById("meter");
 var display = document.getElementsByClassName("form__hints")[0];
 
-password.addEventListener("keyup", function() {
-  passwordMeter(password.value);
+password.addEventListener("keyup", function () {
+    var result = passwordMeter(password.value);
+    display.innerHTML = result.displayHtml.join('<br/>');
+    strengthBar.value = 100 / result.checkCount * result.strength;
 });
 
 function passwordMeter(password) {
-    var strength = 0;
-    display.innerHTML = '';
-    var displayHtml = [];
+    var status = {
+        strength: 0,
+        displayHtml: [],
+        checkCount:0
+    };
 
+    checkPassword(password, status, /[a-z]+/, "Your password must contain at least one lowercase letter");
+    checkPassword(password, status, /[A-Z]+/, "Your password must contain at least one uppercase letter");
+    checkPassword(password, status, /[0-9]+/, "Your password must contain at least one number");
+    checkPassword(password, status, /[$@#&!]+/, "Your password must contain a speical character");
+    checkPassword(password, status, /.{8,}/, "The minimum number of characters is 8");   
+
+    return status;
+}
+
+function checkPassword(password, status, match, title) {
     var passIcon = '<i class="fas fa-check-square" style="color:green"></i> ';
     var failIcon = '<i class="fas fa-exclamation" style="color:red"></i> ';
-    var checkTitle = "Your password must contain at least one lowercase letter";
 
-    if (password.match(/[a-z]+/)) {
-        strength += 1;
-        displayHtml.push(passIcon + checkTitle);
-
+    if (password.match(match)) {
+        status.strength += 1;
+        status.displayHtml.push(passIcon + title);
     } else {
-        displayHtml.push(failIcon + checkTitle);
+        status.displayHtml.push(failIcon + title);
     }
 
-    checkTitle = "Your password must contain at least one uppercase letter";
-    if (password.match(/[A-Z]+/)) {
-        strength += 1;
-        displayHtml.push(passIcon + checkTitle);
-    } else {
-        displayHtml.push(failIcon + checkTitle);
-    }
-
-    checkTitle = "Your password must contain at least one number";
-    if (password.match(/[0-9]+/)) {
-        strength += 1;
-        displayHtml.push(passIcon + checkTitle);
-    } else {
-        displayHtml.push(failIcon + checkTitle);
-    }
-
-    checkTitle = "Your password must contain a speical character";
-    if (password.match(/[$@#&!]+/)) {
-        strength += 1;
-        displayHtml.push(passIcon + checkTitle);
-    } else {
-        displayHtml.push(failIcon + checkTitle);
-    }
-
-    checkTitle = "The minimum number of characters is 8";
-    if (password.length < 8) {
-        displayHtml.push(failIcon + checkTitle);
-    } else {
-        displayHtml.push(passIcon + checkTitle);
-    }
-
-    display.innerHTML = displayHtml.join('<br/>');
-
-    switch (strength) {
-        case 0:
-            strengthBar.value = 0;
-            break;
-
-        case 1:
-            strengthBar.value = 25;
-            break;
-
-        case 2:
-            strengthBar.value = 50;
-            break;
-
-        case 3:
-            strengthBar.value = 75;
-            break;
-
-        case 4:
-            strengthBar.value = 100;
-            break;
-    }
+    status.checkCount++;
 }
 
 function showPassword() {
@@ -85,14 +43,13 @@ function showPassword() {
     var c = x.nextElementSibling;
     if (x.getAttribute('type') == "password") {
         c.removeAttribute("class");
-        c.setAttribute("class","fas fa-eye");
+        c.setAttribute("class", "fas fa-eye");
         x.removeAttribute("type");
-        x.setAttribute("type","text");
-        } else {
+        x.setAttribute("type", "text");
+    } else {
         x.removeAttribute("type");
-          x.setAttribute('type','password');
+        x.setAttribute('type', 'password');
         c.removeAttribute("class");
-        c.setAttribute("class","fas fa-eye-slash");
+        c.setAttribute("class", "fas fa-eye-slash");
     }
 }
-
