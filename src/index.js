@@ -7,61 +7,80 @@ password.addEventListener("keyup", function() {
   passwordMeter(password.value);
 });
 
-
 function passwordMeter(password) {
-  var strength = 0;
-  if (password.match(/[a-z]+/)) {
-    strength += 1;
-  } else {
-    display.innerHTML = "Your password must contain at least one lowercase letter";  
-  }
+    var strength = 0;
+    display.innerHTML = '';
+    var displayHtml = [];
 
-  if (password.match(/[A-Z]+/)) {
-    strength += 1;
-  } else {
-    display.innerHTML = "Your password must contain at least one uppercase letter";  
-  }
+    var passIcon = '<i class="fas fa-check-square" style="color:green"></i> ';
+    var failIcon = '<i class="fas fa-exclamation" style="color:red"></i> ';
+    var checkTitle = "Your password must contain at least one lowercase letter";
 
-  if (password.match(/[0-9]+/)) {
-    strength += 1;
-  } else {
-    display.innerHTML = "Your password must contain at least one number";  
-  }
+    if (password.match(/[a-z]+/)) {
+        strength += 1;
+        displayHtml.push(passIcon + checkTitle);
 
-  if (password.match(/[$@#&!]+/)) {
-    strength += 1;
-  } else {
-    display.innerHTML = "Your password must contain a speical character";
-  }
+    } else {
+        displayHtml.push(failIcon + checkTitle);
+    }
 
-  if (password.length < 8) {
-    display.innerHTML = "The minimum number of characters is 8";
-  }
+    checkTitle = "Your password must contain at least one uppercase letter";
+    if (password.match(/[A-Z]+/)) {
+        strength += 1;
+        displayHtml.push(passIcon + checkTitle);
+    } else {
+        displayHtml.push(failIcon + checkTitle);
+    }
 
-  switch (strength) {
-    case 0:
-        strengthBar.value = 0;
-        break;
+    checkTitle = "Your password must contain at least one number";
+    if (password.match(/[0-9]+/)) {
+        strength += 1;
+        displayHtml.push(passIcon + checkTitle);
+    } else {
+        displayHtml.push(failIcon + checkTitle);
+    }
 
-    case 1:
-        strengthBar.value = 25;
-        break;
+    checkTitle = "Your password must contain a speical character";
+    if (password.match(/[$@#&!]+/)) {
+        strength += 1;
+        displayHtml.push(passIcon + checkTitle);
+    } else {
+        displayHtml.push(failIcon + checkTitle);
+    }
 
-    case 2:
-        strengthBar.value = 50;
-        break;
+    checkTitle = "The minimum number of characters is 8";
+    if (password.length < 8) {
+        displayHtml.push(failIcon + checkTitle);
+    } else {
+        displayHtml.push(passIcon + checkTitle);
+    }
 
-    case 3:
-        strengthBar.value = 75;
-        break;
+    display.innerHTML = displayHtml.join('<br/>');
 
-    case 4:
-        strengthBar.value = 100;
-        break;
-  }
+    switch (strength) {
+        case 0:
+            strengthBar.value = 0;
+            break;
+
+        case 1:
+            strengthBar.value = 25;
+            break;
+
+        case 2:
+            strengthBar.value = 50;
+            break;
+
+        case 3:
+            strengthBar.value = 75;
+            break;
+
+        case 4:
+            strengthBar.value = 100;
+            break;
+    }
 }
 
-function showPw() {
+function showPassword() {
     var x = document.getElementById("password");
     var c = x.nextElementSibling;
     if (x.getAttribute('type') == "password") {
